@@ -1,0 +1,14 @@
+Completed:
+Basic HTML
+Bulma Framework
+Task creation
+Task deletion
+Task load on page refresh
+Using ejs and express
+Task Deletion
+User registration (this is just for show; isnt really functional)
+
+Todo: 
+Live chat (socket.io)
+Web hosting
+Improve CSS styling 

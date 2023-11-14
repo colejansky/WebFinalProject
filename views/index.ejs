@@ -1,0 +1,41 @@
+<%- include('header.ejs') %>
+
+    <!-- Task Creation Form -->
+    <div>
+      <h2>Create Task</h2>
+      <form id="taskForm">
+        <label for="taskName">Task Name:</label>
+        <input type="text" id="taskName" name="taskName" required>
+        <br>
+        <label for="priority">Priority:</label>
+        <select id="priority" name="priority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+        <br>
+        <label for="dueDate">Due Date:</label>
+        <input type="date" id="dueDate" name="dueDate" required>
+        <br>
+        <label for="dueTime">Due Time:</label>
+        <input type="time" id="dueTime" name="dueTime">
+        <br>
+        <label for="comments">Comments:</label>
+        <textarea id="comments" name="comments" rows="4"></textarea>
+        <br>
+        <button type="submit">Create Task</button>
+      </form>
+    </div>
+
+    <!-- Task List -->
+    <div id="taskList">
+      <!-- Display tasks here dynamically using JavaScript -->
+    </div>
+
+
+  </body>
+
+  <%- include ('footer.ejs') %>
+  <script src="/js/tasks.js"></script>
+
+</html>
