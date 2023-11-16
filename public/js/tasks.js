@@ -1,4 +1,26 @@
-// on page load load in tasks that have not been deleted
+// tasks.js
+
+// Function to create a task element with Delete Task button
+function createTaskElement(taskName, priority, dueDate, dueTime, comments) {
+  const taskElement = document.createElement('div');
+  taskElement.innerHTML = `
+    <p><strong>Task Name:</strong> ${taskName}</p>
+    <p><strong>Priority:</strong> ${priority}</p>
+    <p><strong>Due Date:</strong> ${dueDate}</p>
+    <p><strong>Due Time:</strong> ${dueTime}</p>
+    <p><strong>Comments:</strong> ${comments}</p>
+    <button onclick="deleteTask(this)">Delete Task</button>
+  `;
+  return taskElement;
+}
+
+// Function to delete a task
+function deleteTask(button) {
+  const taskElement = button.parentNode;
+  taskElement.parentNode.removeChild(taskElement);
+  saveTasks();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const taskForm = document.getElementById('taskForm');
   const taskList = document.getElementById('taskList');
@@ -29,27 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     taskForm.reset();
   });
 
-  // Function to create a task element with Delete Task button
-  function createTaskElement(taskName, priority, dueDate, dueTime, comments) {
-    const taskElement = document.createElement('div');
-    taskElement.innerHTML = `
-      <p><strong>Task Name:</strong> ${taskName}</p>
-      <p><strong>Priority:</strong> ${priority}</p>
-      <p><strong>Due Date:</strong> ${dueDate}</p>
-      <p><strong>Due Time:</strong> ${dueTime}</p>
-      <p><strong>Comments:</strong> ${comments}</p>
-      <button onclick="deleteTask(this)">Delete Task</button>
-    `;
-    return taskElement;
-  }
-
-  // Function to delete a task
-  window.deleteTask = (button) => {
-    const taskElement = button.parentNode;
-    taskList.removeChild(taskElement);
-    saveTasks();
-  };
-
   // Function to save tasks to localStorage
   function saveTasks() {
     const tasks = Array.from(taskList.children).map(taskElement => taskElement.innerHTML);
@@ -69,5 +70,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
-
-
